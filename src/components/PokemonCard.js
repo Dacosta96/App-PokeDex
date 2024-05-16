@@ -7,22 +7,29 @@ import {
   TouchableWithoutFeedback,
   Image,
 } from "react-native";
+import { capitalize } from "lodash";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+import getColorByPokemon from "./../utils/getColorByPokemonType";
 
 export default function PokemoCard(props) {
   const { pokemon } = props;
+  const navigation = useNavigation();
+  const Stack = createStackNavigator();
+  const pokemonColor = getColorByPokemon(pokemon.type);
 
   const goToPokemon = () => {
-    console.log(pokemon.name);
+    navigation.navigate("Pokemon", { id: pokemon.id });
   };
   return (
     <TouchableWithoutFeedback onPress={goToPokemon}>
       <View style={styles.card}>
         <View style={styles.spacing}>
-          <View style={styles.bgStyles}>
+          <View style={[styles.bgStyles, { backgroundColor: pokemonColor }]}>
             <Text style={styles.number}>
               #{`${pokemon.order}`.padStart(3, 0)}
             </Text>
-            <Text style={styles.name}>{pokemon.name}</Text>
+            <Text style={styles.name}>{capitalize(pokemon.name)}</Text>
             <Image source={{ uri: pokemon.image }} style={styles.image} />
           </View>
         </View>
@@ -41,7 +48,8 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   bgStyles: {
-    backgroundColor: "grey",
+    flex: 1,
+    borderRadius: 15,
   },
   number: {
     position: "absolute",
@@ -55,11 +63,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
     paddingTop: 10,
+    left: 8,
   },
   image: {
     position: "absolute",
-    bottom: 2,
-    right: 2,
+    bottom: 8,
+    right: 24,
     width: 90,
     height: 90,
   },

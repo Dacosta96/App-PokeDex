@@ -6,6 +6,7 @@ import { Image } from "react-native";
 import Favorites from "./../screens/Favorites";
 import Account from "./../screens/Account";
 import Pokedex from "./../screens/Pokedex";
+import PokedexScren from "./PokedexScren";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ export default function Navigation() {
       />
       <Tab.Screen
         name="Pokedex"
-        component={Pokedex}
+        component={PokedexScren}
         options={{
           tabBarLabel: "",
           tabBarIcon: () => renderPokeBall(),
