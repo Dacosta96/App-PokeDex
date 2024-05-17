@@ -21,8 +21,12 @@ export default function Navigation() {
           tabBarIcon: ({ color, size }) => (
             <Icon name="heart" color={color} size={size} />
           ),
-          headerTitle: "Favoritos",
-          headerTitleAlign: "center",
+          headerTitle: "",
+          headerTransparent: false,
+          headerStyle: {
+            //backgroundColor: "#f4511e",
+            //height: 0, // Cambia la altura del encabezado aquí
+          },
         }}
       />
       <Tab.Screen
@@ -31,8 +35,13 @@ export default function Navigation() {
         options={{
           tabBarLabel: "",
           tabBarIcon: () => renderPokeBall(),
-          headerTitle: "Pokedex",
-          headerTitleAlign: "center",
+          headerTitle: "",
+          //headerTitleAlign: "center",
+          headerTransparent: false,
+          headerStyle: {
+            //backgroundColor: "#f4511e",
+            height: 50, // Cambia la altura del encabezado aquí
+          },
         }}
       />
       <Tab.Screen
@@ -43,8 +52,12 @@ export default function Navigation() {
           tabBarIcon: ({ color, size }) => (
             <Icon name="user" color={color} size={size} />
           ),
-          headerTitle: "Mi cuenta",
-          headerTitleAlign: "center",
+          headerTitle: "",
+          //headerTitleAlign: "center",
+          headerStyle: {
+            //backgroundColor: "#f4511e",
+            height: 50, // Cambia la altura del encabezado aquí
+          },
         }}
       />
     </Tab.Navigator>

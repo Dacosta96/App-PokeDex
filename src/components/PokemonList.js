@@ -23,15 +23,15 @@ export default function PokemonList(props) {
       contentContainerStyle={styles.flatListContentContainer}
       onEndReached={isNext && loadMore}
       onEndReachedThreshold={0.1}
-      ListFooterComponent={
-        isNext && (
-          <ActivityIndicator
-            size="large"
-            style={styles.spinner}
-            color="#AEAEAE"
-          />
-        )
-      }
+      // ListFooterComponent={
+      //   isNext && (
+      //     <ActivityIndicator
+      //       size="large"
+      //       style={styles.spinner}
+      //       color="#AEAEAE"
+      //     />
+      //   )
+      // }
     />
   );
 }
