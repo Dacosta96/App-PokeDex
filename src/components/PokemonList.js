@@ -26,9 +26,9 @@ export default function PokemonList(props) {
       // ListFooterComponent={
       //   isNext && (
       //     <ActivityIndicator
-      //       size="large"
-      //       style={styles.spinner}
-      //       color="#AEAEAE"
+      //       // size="large"
+      //       // style={styles.spinner}
+      //       // color="#AEAEAE"
       //     />
       //   )
       // }
