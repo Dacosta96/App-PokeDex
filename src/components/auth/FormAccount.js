@@ -16,7 +16,6 @@ export default function LoginForm() {
   const [error, setError] = useState("");
 
   const { login } = useAuth();
-  console.log(useAuth());
 
   const formik = useFormik({
     validationSchema: Yup.object().shape({
