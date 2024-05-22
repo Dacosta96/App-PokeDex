@@ -4,13 +4,15 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {
   addPokemonFavoriteApi,
   isPokemonFavoriteApi,
+  removePokemonFavoriteApi,
 } from "../../api/Favorite";
+import { assign } from "lodash";
 
 export default function Favorite(props) {
   const { id } = props;
 
   const [isFavorite, setIsFavorite] = useState(undefined);
-  console.log(isFavorite);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -21,14 +23,27 @@ export default function Favorite(props) {
         setIsFavorite(false);
       }
     })();
-  }, [id]);
+  }, [id, reload]);
 
+  const onReloadCheckFavorite = () => {
+    setReload((prev) => !prev);
+  };
   const addFavorite = async () => {
-    await addPokemonFavoriteApi(id);
+    try {
+      await addPokemonFavoriteApi(id);
+      onReloadCheckFavorite();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const removeFavorite = () => {
-    console.log("eliminar de favoritos");
+  const removeFavorite = async () => {
+    try {
+      await removePokemonFavoriteApi(id);
+      onReloadCheckFavorite();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
